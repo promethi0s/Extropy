@@ -13,7 +13,7 @@ Item.cpp: Implements the AItem class
 // AItem
 //----------------------------------------------------------------------//
 
-void AItem::OnPickup(AHuman* NewOwner)
+void AItem::Added(AHuman* NewOwner)
 {
 	Instigator = NewOwner;
 	SetOwner(NewOwner);
@@ -21,7 +21,7 @@ void AItem::OnPickup(AHuman* NewOwner)
 	PrimaryActorTick.AddPrerequisite(HumanOwner, HumanOwner->PrimaryActorTick);
 }
 
-void AItem::OnDrop()
+void AItem::Removed()
 {
 	if (HumanOwner)
 	{
@@ -50,4 +50,21 @@ void AItem::DetachMesh()
 	{
 		Mesh->DetachFromComponent(FDetachmentTransformRules::KeepRelativeTransform);
 	}
+}
+
+AHuman* AItem::GetHumanOwner()
+{
+	return HumanOwner;
+}
+
+void AItem::Destroyed()
+{
+	if (HumanOwner != NULL)
+	{
+		// HumanOwner->RemoveItem(this);
+	}
+
+	GetWorldTimerManager().ClearAllTimersForObject(this);
+
+	Super::Destroyed();
 }

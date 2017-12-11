@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Item.h"
-#include "Ammo.generated.h"
+#include "Ammunition.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class EXTROPY_API AAmmo : public AItem
+class EXTROPY_API AAmmunition : public AItem
 {
 	GENERATED_BODY()
 };

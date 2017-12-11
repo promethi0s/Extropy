@@ -246,7 +246,7 @@ bool AHuman::AddToInventory(AItem* ItemToAdd, bool bAutoActivate)
 		{
 			// !TODO Assign item to slot
 
-			ItemToAdd->PickedUp(this);
+			ItemToAdd->Added(this);
 
 			return true;
 		}
@@ -268,7 +268,7 @@ void AHuman::RemoveFromInventory(AItem* ItemToRemove)
 		{
 			// If item is active or pending, update combat component
 
-			ItemToRemove->Dropped();
+			ItemToRemove->Removed();
 		}
 	}
 }
@@ -289,7 +289,7 @@ void AHuman::TossItem(AItem* ItemToToss, FVector ExtraVelocity)
 		{
 			const FVector SpawnOrigin = GetActorLocation() + GetActorRotation().Vector() * GetSimpleCollisionCylinderExtent().X;
 			const FVector SpawnVelocity = GetVelocity() + GetActorRotation().RotateVector(ExtraVelocity + FVector(300.0f, 0.0f, 150.0f));
-			ItemToToss->Toss(SpawnOrigin, SpawnVelocity);
+			// ItemToToss->Toss(SpawnOrigin, SpawnVelocity);
 		}
 	}
 }

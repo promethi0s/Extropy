@@ -10,11 +10,6 @@ Item.h: Implements the AItem class
 #include "GameFramework/Actor.h"
 #include "Item.generated.h"
 
-class AHuman;
-class UMeshComponent;
-class UShapeComponent;
-class UProjectileMovement;
-
 /**
 * Base class for all inventory items.
 * @see AWeapon, AArmor, AQuestItem, AConsumable, AAmmo
@@ -32,19 +27,11 @@ public:
 
 	/** . */
 	UFUNCTION()
-	virtual void OnPickup(AHuman* NewOwner);
+	virtual void Added(AHuman* NewOwner);
 
 	/** . */
 	UFUNCTION()
-	virtual void OnDrop();
-
-	/** . */
-	UFUNCTION()
-	void Equip();
-
-	/** . */
-	UFUNCTION()
-	void Unequip();
+	virtual void Removed();
 
 	/** . */
 	UFUNCTION()
@@ -53,6 +40,10 @@ public:
 	/** . */
 	UFUNCTION()
 	void DetachMesh();
+
+	/** . */
+	UFUNCTION()
+	AHuman* GetHumanOwner();
 
 	//--------------------------------
 	// Attributes
@@ -88,17 +79,25 @@ private:
 
 	/** . */
 	UPROPERTY()
-	AHuman* HumanOwner;
+	class AHuman* HumanOwner;
 
 	/** . */
 	UPROPERTY()
-	UMeshComponent* Mesh;
+	class UMeshComponent* Mesh;
 
 	/** . */
 	UPROPERTY()
-	UShapeComponent* Collision;
+	class UShapeComponent* Collision;
 
 	/** . */
 	UPROPERTY()
-	UProjectileMovement* Movement;
+	class UProjectileMovement* Movement;
+
+	//--------------------------------
+	// Overrids
+	//--------------------------------
+
+public:
+
+	virtual void Destroyed() override;
 };

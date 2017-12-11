@@ -1,10 +1,10 @@
 // Find something better to copy.
 
 /*=============================================================================
-Ammo.cpp: Implements the AAmmo class
+Ammunition.cpp: Implements the AAmmunition class
 =============================================================================*/
 
-#include "Ammo.h"
+#include "Ammunition.h"
 
 //----------------------------------------------------------------------//
 // AAmmo

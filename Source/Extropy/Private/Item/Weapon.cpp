@@ -26,10 +26,10 @@ EWeaponType AWeapon::GetType() const
 
 void AWeapon::Arm()
 {
-	AttachMesh(WeaponSocket);
+	AttachMesh(HandSocket);
 }
 
 void AWeapon::Disarm()
 {
-	AttachMesh(DefaultSocket);
+	AttachMesh(HolsterSocket);
 }

@@ -49,7 +49,11 @@ protected:
 
 	/** . */
 	UPROPERTY(VisibleDefaultsOnly, Category = "Mesh")
-	FName WeaponSocket;
+	FName HandSocket;
+
+	/** . */
+	UPROPERTY(VisibleDefaultsOnly, Category = "Mesh")
+	FName HolsterSocket;
 
 	/** . */
 	UPROPERTY(VisibleDefaultsOnly, Category = "Mesh")
